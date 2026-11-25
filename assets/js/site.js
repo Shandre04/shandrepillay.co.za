@@ -117,14 +117,26 @@
     if (veilIn && !calm) setTimeout(slideNav, 250); else slideNav();
   }
 
-  // Mobile menu
+  // Mobile menu: a frosted panel that slides in from the side
   var toggle = document.querySelector('.menu-toggle');
   var list = document.querySelector('.nav-list');
   if (toggle && list) {
-    toggle.addEventListener('click', function () {
-      var open = list.classList.toggle('open');
+    var icon = toggle.querySelector('path');
+    var setMenu = function (open) {
+      list.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', open);
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (icon) icon.setAttribute('d', open ? 'M6 6l12 12M18 6L6 18' : 'M3 6h18M3 12h18M3 18h18');
+    };
+    toggle.setAttribute('aria-label', 'Open menu');
+    toggle.addEventListener('click', function () { setMenu(!list.classList.contains('open')); });
+    document.addEventListener('click', function (e) {   // tap outside the panel closes it
+      if (list.classList.contains('open') && !list.contains(e.target) && !toggle.contains(e.target)) setMenu(false);
     });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && list.classList.contains('open')) { setMenu(false); toggle.focus(); }
+    });
+    list.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
   }
 
   // Profile photo: use assets/img/profile.jpg if present, else keep initials

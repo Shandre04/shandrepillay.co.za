@@ -54,6 +54,13 @@
   --tint: rgba(125, 79, 107, 0.08);
   --band: var(--kelp);
 
+  /* frosted glass and the contour field behind it */
+  --glass: rgba(240, 237, 232, 0.58);
+  --glass-strong: rgba(240, 237, 232, 0.86);
+  --glass-edge: rgba(255, 255, 255, 0.6);
+  --frost: blur(14px) saturate(1.25);
+  --contour: rgba(28, 35, 33, 0.16);
+
   /* type */
   --serif: "Spectral", Georgia, "Times New Roman", serif;
   --sans: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -79,6 +86,10 @@ body.dark-mode {
   --outline: rgba(233, 230, 224, 0.3);
   --tint: rgba(214, 168, 195, 0.1);
   --band: #242e2b;
+  --glass: rgba(24, 31, 29, 0.55);
+  --glass-strong: rgba(24, 31, 29, 0.88);
+  --glass-edge: rgba(233, 230, 224, 0.1);
+  --contour: rgba(233, 230, 224, 0.1);
 }
 
 /* Kelp bands swap every role at once */
@@ -91,8 +102,42 @@ body.dark-mode {
   --rule: rgba(235, 232, 227, 0.16);
   --outline: rgba(235, 232, 227, 0.34);
   --tint: rgba(240, 168, 104, 0.12);
+  --glass-edge: rgba(235, 232, 227, 0.12);
+  --contour: rgba(240, 168, 104, 0.11);
   background: var(--ground);
   color: var(--ink);
+}
+
+/* ---------- The contour field (fixed, behind everything) and frosted glass ---------- */
+.page { position: relative; isolation: isolate; }
+.page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--contour);
+  -webkit-mask: url("../img/contours.svg") 62% 40% / cover no-repeat;
+  mask: url("../img/contours.svg") 62% 40% / cover no-repeat;
+}
+.glass, .hero-copy, .carousel, main:not(.home) {
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--frost);
+  backdrop-filter: var(--frost);
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--panel);
+}
+/* the closing band carries the same hills, faintly, in afterglow */
+.close { position: relative; isolation: isolate; overflow: hidden; }
+.close::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--contour);
+  -webkit-mask: url("../img/contours.svg") 85% 70% / max(60rem, 100%) auto no-repeat;
+  mask: url("../img/contours.svg") 85% 70% / max(60rem, 100%) auto no-repeat;
 }
 
 /* ---------- Base ---------- */
@@ -147,10 +192,19 @@ main.home > * { padding-inline: var(--pad-x); }
   justify-content: space-between;
   gap: 1rem;
   min-height: 4.75rem;
-  background: color-mix(in srgb, var(--ground) 92%, transparent);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--rule);
+  isolation: isolate;
+}
+/* the frost lives on a pseudo-element so the header never becomes the
+   containing block for the fixed side menu */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--frost);
+  backdrop-filter: var(--frost);
 }
 .brand { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; --logo: var(--ink); }
 .logo-mark { height: 2.4rem; width: auto; flex: 0 0 auto; overflow: visible; transition: transform 0.35s cubic-bezier(.3,1.4,.5,1); }
@@ -215,7 +269,7 @@ main.home > * { padding-inline: var(--pad-x); }
   60%  { opacity: 1; }
   to   { opacity: 1; transform: none; }
 }
-@keyframes navDrop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+@keyframes navDrop { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: none; } }
 .nav-list.sliding li { animation: navSlide 0.5s cubic-bezier(.2, .9, .25, 1) both; animation-delay: calc(var(--r, 0) * 30ms); }
 
 /* Home tab: Table Mountain line drawing that sketches itself */
@@ -338,7 +392,9 @@ body.dark-mode .theme-switch::after { transform: translateX(1.2rem); background:
   padding-top: clamp(3rem, 7vw, 5.5rem);
   padding-bottom: 0;
 }
-.hero-copy { padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+.hero-copy { padding: clamp(1.5rem, 3vw, 2.75rem); margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+.carousel { padding: clamp(0.5rem, 1.5vw, 1rem) clamp(1.25rem, 3vw, 2.25rem) clamp(1.25rem, 3vw, 2.25rem); }
+.carousel .carousel-track { border-top: 0; }
 .hero-heading { max-width: 19.5ch; margin-bottom: 1.5rem; }
 .hero-intro { color: var(--muted); font-size: clamp(1.125rem, 1rem + 0.45vw, 1.35rem); line-height: 1.5; max-width: 34em; margin-bottom: 2rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
@@ -509,7 +565,11 @@ body.dark-mode .theme-switch::after { transform: translateX(1.2rem); background:
 .close .hero-actions { margin: 0; }
 
 /* ---------- Inner pages ---------- */
-main:not(.home) { padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: var(--section); }
+/* inner pages: the content is one frosted sheet over the hills */
+main:not(.home) {
+  margin: clamp(1.5rem, 4vw, 3rem) var(--pad-x) clamp(3rem, 7vw, 5.5rem);
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3.5rem);
+}
 .page-title { max-width: 16ch; margin-bottom: 1.25rem; }
 .page-lede { color: var(--muted); font-size: clamp(1.125rem, 1rem + 0.45vw, 1.3rem); line-height: 1.5; max-width: 36em; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
 
@@ -571,12 +631,7 @@ main:not(.home) { padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: var(--sec
 
 /* ---------- CV page ---------- */
 .cv-bar { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: -1.5rem 0 2.5rem; }
-.cv-sheet {
-  background: var(--paper);
-  border: 1px solid var(--rule);
-  border-radius: var(--panel);
-  padding: clamp(1.5rem, 4vw, 3.25rem);
-}
+.cv-sheet { border-top: 1px solid var(--rule); padding-top: clamp(1.5rem, 3vw, 2.5rem); }
 .cv-head { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
 .cv-name { font: 300 clamp(2.2rem, 1.6rem + 2vw, 3rem)/1.05 var(--serif); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
 .cv-contact { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; color: var(--muted); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
@@ -708,7 +763,7 @@ html.veil-in .page { opacity: 0; animation: showPage 0s 1.5s forwards; }
   .hero, .close-inner, .focus-head, .section-head, .two-col { grid-template-columns: minmax(0, 1fr); }
   .hero { align-items: start; }
   .hero-figure { justify-self: start; width: min(100%, 22rem); }
-  .hero-copy { padding-bottom: 0; }
+  .hero-copy { margin-bottom: 0; }
   .section-head .link-arrow { justify-self: start; }
   .strip-item { grid-template-columns: 3rem minmax(0, 1fr); }
   .strip-item p { grid-column: 2; }
@@ -721,20 +776,28 @@ html.veil-in .page { opacity: 0; animation: showPage 0s 1.5s forwards; }
 @media (max-width: 54rem) {
   .menu-toggle { display: inline-grid; }
   .nav-slider { display: none; }
+  /* the menu slides in sideways as a frosted panel */
+  .brand, .menu-toggle, .theme-switch { position: relative; z-index: 2; }
   .nav-list {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
+    position: fixed;
+    top: 0;
     right: 0;
+    bottom: 0;
+    z-index: 1;
+    width: min(82vw, 21rem);
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    background: var(--ground);
-    border-bottom: 1px solid var(--rule);
-    padding: 0.5rem var(--pad-x) 1rem;
+    padding: 5.75rem 1.5rem max(2rem, env(safe-area-inset-bottom));
+    background: var(--glass-strong);
+    -webkit-backdrop-filter: var(--frost);
+    backdrop-filter: var(--frost);
+    border-left: 1px solid var(--glass-edge);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.38s var(--ease), visibility 0s linear 0.38s;
   }
-  .nav-list.open { display: flex; }
+  .nav-list.open { transform: none; visibility: visible; transition: transform 0.38s var(--ease), visibility 0s; }
   .nav-list li { border-top: 1px solid var(--rule); }
   .nav-list li:first-child { border-top: 0; }
   .nav-link { display: flex; padding: 0.85rem 0; font-size: 1.05rem; color: var(--ink); border: 0; }
@@ -779,6 +842,7 @@ html.veil-in .page { opacity: 0; animation: showPage 0s 1.5s forwards; }
   .acc-body, .acc-open .acc-body, .acc-chev { transition: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .btn, .car-btn, .acc-all, .theme-switch::after { transition: none; }
+  .nav-list, .nav-list.open { transition: none; }
 }
 
 /* ---------- Print (the CV PDF is printed from cv.html?print) ---------- */
@@ -790,7 +854,8 @@ html.veil-in .page { opacity: 0; animation: showPage 0s 1.5s forwards; }
     background: #fff; color: #1c2321;
   }
   .site-header, .site-footer, .back-to-top, .cv-bar, .page-title, .page-lede, .veil, .horizon { display: none !important; }
-  main:not(.home) { padding: 0; }
+  .page::before, .close::before { display: none !important; }
+  main:not(.home) { padding: 0; margin: 0; background: none; border: 0; border-radius: 0; -webkit-backdrop-filter: none; backdrop-filter: none; }
   .cv-sheet { border: 0; padding: 0; background: #fff; border-radius: 0; }
   .cv-name { font-size: 2.4rem; }
   .cv-head { margin-bottom: 1.1rem; padding-bottom: 0.8rem; }
