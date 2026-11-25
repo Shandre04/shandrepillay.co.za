@@ -6,11 +6,10 @@
   <title>Home | Shandré Pillay</title>
   <meta name="description" content="Shandré Pillay — BCom Financial & Investment Management student at Stellenbosch University, CFO & Head of Volunteers at SaveSeven.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@300;700&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/spectral-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/main.css">
-  <script>try{if(localStorage.getItem('theme')==='dark'||(!localStorage.getItem('theme')&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.style.background='#121110'}catch(e){}</script>
+  <script>try{if(localStorage.getItem('theme')==='dark'||(!localStorage.getItem('theme')&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.style.background='#121716'}catch(e){}</script>
   <script>try{if(sessionStorage.getItem('veil')){sessionStorage.removeItem('veil');document.documentElement.classList.add('veil-in')}}catch(e){}</script>
 </head>
 <body>
@@ -50,113 +49,127 @@
     </div>
   </header>
 
-  <main>
-    <!-- Hero -->
+  <main class="home">
     <section class="hero">
-      <div class="hero-inner">
-        <img class="hero-photo" src="assets/img/profile.jpg" alt="Shandré Pillay" style="display:none">
-        <div class="hero-photo-placeholder" aria-hidden="true">SP</div>
-        <div>
-          <div class="eyebrow">Finance · Investment Management</div>
-          <h1 class="hero-heading">Capital allocation, financial governance and disciplined analysis.</h1>
-          <div class="hero-intro">
-            <p>BCom Management Sciences student at Stellenbosch University, majoring in Financial &amp; Investment Management. CFO &amp; Head of Volunteers at SaveSeven, based in Cape Town.</p>
-          </div>
-          <div class="hero-actions">
-            <a class="btn btn-light" href="experience.html">View experience</a>
-            <a class="btn btn-outline" href="assets/docs/Shandre-Pillay-CV.pdf" download>Download CV</a>
-          </div>
+      <div class="hero-copy">
+        <h1 class="hero-heading">Capital allocation, financial governance and <em>disciplined</em> analysis.</h1>
+        <p class="hero-intro">BCom Management Sciences student at Stellenbosch University, majoring in Financial &amp; Investment Management. CFO &amp; Head of Volunteers at SaveSeven, based in Cape Town.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="assets/docs/Shandre-Pillay-CV.pdf" download><span class="dot" aria-hidden="true"></span>Download CV</a>
+          <a class="btn btn-ghost" href="experience.html">View experience</a>
         </div>
+        <p class="meta hero-tag"><b>Expected Dec 2026</b> · Stellenbosch University · Cape Town</p>
       </div>
+      <figure class="hero-figure">
+        <img class="hero-photo" src="assets/img/profile.jpg" alt="Shandré Pillay" width="800" height="800" style="display:none">
+        <div class="hero-photo-placeholder" aria-hidden="true">SP</div>
+      </figure>
     </section>
+    <div class="horizon" aria-hidden="true"><span class="sun"></span></div>
 
-    <!-- Focus areas -->
-    <section class="strip">
-      <div class="eyebrow strip-label">Focus areas</div>
-      <div class="strip-grid">
-        <div class="strip-item">
-          <div class="strip-icon"><svg viewBox="0 0 44 44"><rect class="bar" x="6" y="22" width="6" height="16" rx="1"/><rect class="bar" x="15" y="14" width="6" height="24" rx="1"/><rect class="bar" x="24" y="18" width="6" height="20" rx="1"/><rect class="bar" x="33" y="8" width="6" height="30" rx="1"/></svg></div>
+    <section class="focus band">
+      <div class="focus-head strip-label">
+        <h2>What I <em>work</em> on.</h2>
+        <p>Four areas that run through my degree, my work at SaveSeven and the roles I've held.</p>
+      </div>
+      <ul class="strip-grid">
+        <li class="strip-item">
+          <div class="strip-icon"><svg viewBox="0 0 44 44" aria-hidden="true"><rect class="bar" x="6" y="22" width="6" height="16" rx="1"/><rect class="bar" x="15" y="14" width="6" height="24" rx="1"/><rect class="bar" x="24" y="18" width="6" height="20" rx="1"/><rect class="bar" x="33" y="8" width="6" height="30" rx="1"/></svg></div>
           <h3>Financial analysis</h3>
           <p>Financial statements, balance sheets and working capital across high-volume portfolios.</p>
-        </div>
-        <div class="strip-item">
-          <div class="strip-icon"><svg viewBox="0 0 44 44"><path class="ic-stroke ic-soft" d="M5 38h34M5 38V6" style="opacity:.6"/><polyline class="ic-stroke trend-line" points="8,32 17,22 25,27 38,9"/><circle class="trend-dot" cx="38" cy="9" r="3"/></svg></div>
+        </li>
+        <li class="strip-item">
+          <div class="strip-icon"><svg viewBox="0 0 44 44" aria-hidden="true"><path class="ic-stroke ic-soft" d="M5 38h34M5 38V6"/><polyline class="ic-stroke trend-line" points="8,32 17,22 25,27 38,9"/><circle class="trend-dot" cx="38" cy="9" r="3"/></svg></div>
           <h3>Investment &amp; portfolios</h3>
           <p>Investment and portfolio management, corporate valuation principles and economic research.</p>
-        </div>
-        <div class="strip-item">
-          <div class="strip-icon"><svg viewBox="0 0 44 44"><ellipse class="coin ic-stroke" cx="22" cy="22" rx="14" ry="14"/><text x="22" y="28" text-anchor="middle" font-family="Source Serif 4, Georgia, serif" font-size="18" style="fill:var(--accent)">R</text></svg></div>
+        </li>
+        <li class="strip-item">
+          <div class="strip-icon"><svg viewBox="0 0 44 44" aria-hidden="true"><path class="ic-stroke ic-soft" d="M8 31c0 2.2 6.3 4 14 4s14-1.8 14-4M8 36c0 2.2 6.3 4 14 4s14-1.8 14-4M8 31v5M36 31v5"/><g class="coin"><circle class="ic-stroke" cx="22" cy="15" r="10"/><circle class="ic-stroke" cx="22" cy="15" r="5.5"/></g></svg></div>
           <h3>Corporate finance</h3>
           <p>Budgeting, forecasting and cash flow governance, including advanced Excel financial modelling.</p>
-        </div>
-        <div class="strip-item">
-          <div class="strip-icon strip-logo"><svg class="save7-mark" viewBox="0 0 1385 1291" role="img" aria-label="Save7 logo"><polygon class="v7 v7-a" points="0,5 428,5 660,777 509,1291 432,1291"/><polygon class="v7 v7-b" points="585,0 1385,0 952,1291 579,1285 848,368 685,368"/></svg></div>
+        </li>
+        <li class="strip-item">
+          <div class="strip-icon strip-logo"><svg class="save7-mark" viewBox="0 0 1385 1291" role="img" aria-label="SaveSeven logo"><polygon class="v7 v7-a" points="0,5 428,5 660,777 509,1291 432,1291"/><polygon class="v7 v7-b" points="585,0 1385,0 952,1291 579,1285 848,368 685,368"/></svg></div>
           <h3>Non-profit leadership</h3>
           <p>Financial governance and volunteer management for a growing regional non-profit.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Currently &amp; <em>recent</em>.</h2>
+        <a class="link-arrow" href="experience.html">All experience<svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+      <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Currently and recent">
+        <div class="carousel-track" tabindex="0">
+          <article class="slide">
+            <div>
+              <h3>AI in Tertiary Education, STIAS</h3>
+              <p class="meta"><b>Sep – Nov 2026</b> · AI research · Stellenbosch</p>
+            </div>
+            <p>Took part in a two-day Stellenbosch University and UCT workshop at the Stellenbosch Institute for Advanced Study on generative AI in higher education. Findings and guidelines will inform a policy framework. Then spoke on the student panel at the follow-up SoTL Conference, 18 November.</p>
+          </article>
+          <article class="slide">
+            <div>
+              <h3>CFO &amp; Head of Volunteers</h3>
+              <p class="meta"><b>Aug 2025 – Present</b> · SaveSeven · Cape Town</p>
+            </div>
+            <p>SaveSeven (non-profit organisation), Cape Town. Capital allocation, budgeting, financial reporting and volunteer leadership.</p>
+          </article>
+          <article class="slide">
+            <div>
+              <h3>Casual Sales Consultant</h3>
+              <p class="meta"><b>Nov 2025 – Present</b> · Wedgewood · Cape Town</p>
+            </div>
+            <p>Wedgewood Crafted Confectionary, Cape Town. Point-of-sale, daily register reconciliation and bespoke corporate hampers.</p>
+          </article>
+          <article class="slide">
+            <div>
+              <h3>EMS Faculty Student Body</h3>
+              <p class="meta"><b>Previously</b> · Stellenbosch University</p>
+            </div>
+            <p>Former executive member, driving the Corporate Companies and Professional Interactions portfolio.</p>
+          </article>
+        </div>
+        <div class="carousel-controls">
+          <button class="car-btn car-prev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="car-btn car-next" type="button" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          <div class="car-dots" role="tablist" aria-label="Choose a slide"></div>
+          <span class="car-count" aria-live="polite"></span>
         </div>
       </div>
     </section>
+    <div class="horizon horizon-close" aria-hidden="true"><span class="sun"></span></div>
 
-    <!-- Callout -->
-    <aside class="callout">
-      <div class="callout-icon"><svg viewBox="0 0 36 36" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h12l7 7v21H9z"/><path d="M21 4v7h7"/><path d="M14 19h9M14 24h9M14 14h3"/></svg></div>
-      <div>
-        <div class="eyebrow">Curriculum vitae</div>
-        <h3>Read the full CV or take a copy</h3>
-        <p>Education, leadership, work experience and skills on one page, plus the original document to download.</p>
-        <a class="more" href="cv.html">Open the CV →</a>
-      </div>
-    </aside>
-
-    <!-- Current role -->
-    <section class="section">
-      <div class="section-head"><h2>Currently &amp; recent</h2><a href="experience.html">All experience →</a></div>
-      <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Currently and recent">
-      <div class="carousel-track" tabindex="0">
-        <div class="card slide">
-          <div class="eyebrow">Sep – Nov 2026 · AI research</div>
-          <h3>AI in Tertiary Education · STIAS</h3>
-          <p>Took part in a two-day Stellenbosch University and UCT workshop at the Stellenbosch Institute for Advanced Study on generative AI in higher education. Findings and guidelines will inform a policy framework. Next: the SoTL Conference, 18 November.</p>
-        </div>
-        <div class="card slide">
-          <div class="eyebrow">Aug 2025 – Present</div>
-          <h3>CFO &amp; Head of Volunteers</h3>
-          <p>SaveSeven (non-profit organisation), Cape Town. Capital allocation, budgeting, financial reporting and volunteer leadership.</p>
-        </div>
-        <div class="card slide">
-          <div class="eyebrow">Nov 2025 – Present</div>
-          <h3>Casual Sales Consultant</h3>
-          <p>Wedgewood Crafted Confectionary, Cape Town. Point-of-sale, daily register reconciliation and bespoke corporate hampers.</p>
-        </div>
-        <div class="card slide">
-          <div class="eyebrow">Previously · Stellenbosch University</div>
-          <h3>EMS Faculty Student Body</h3>
-          <p>Former executive member, driving the Corporate Companies and Professional Interactions portfolio.</p>
+    <section class="close band">
+      <div class="close-inner">
+        <h2>Take the full <em>CV</em> with you.</h2>
+        <div>
+          <p>Two pages: education, experience, skills and references, ready to save or share.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="assets/docs/Shandre-Pillay-CV.pdf" download><span class="dot" aria-hidden="true"></span>Download CV</a>
+            <a class="btn btn-ghost" href="cv.html">Read it online</a>
+          </div>
         </div>
       </div>
-      <div class="carousel-controls">
-        <button class="car-btn car-prev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-        <div class="car-dots" role="tablist" aria-label="Choose a slide"></div>
-        <span class="car-count" aria-live="polite"></span>
-        <button class="car-btn car-next" type="button" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-      </div>
-    </div>
     </section>
   </main>
 
-  <footer class="site-footer" id="contact">
+  <footer class="site-footer band" id="contact">
+    <p class="footer-sign">Shandré Pillay, <em>Cape Town</em>.</p>
     <div>
       <h4>Contact</h4>
       <ul>
         <li><a href="mailto:shandrepillayhb@gmail.com">shandrepillayhb@gmail.com</a></li>
         <li><a href="tel:+27726272584">072 627 2584</a></li>
-        <li>Cape Town, South Africa</li>
+        <li><span>Cape Town, South Africa</span></li>
       </ul>
     </div>
     <div>
       <h4>Elsewhere</h4>
       <ul>
-        <li><a href="https://www.linkedin.com/in/shandre-pillay-23a5292a1/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="https://www.linkedin.com/in/shandre-pillay-23a5292a1/" target="_blank" rel="noopener">LinkedIn<svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6.5 5H11v4.5"/></svg></a></li>
         <li><a href="assets/docs/Shandre-Pillay-CV.pdf" download>Download CV</a></li>
       </ul>
     </div>
@@ -169,9 +182,8 @@
         <li><a href="cv.html">CV</a></li>
       </ul>
     </div>
-    <div class="footer-bottom">© Shandré Pillay</div>
-  </footer>
-</div>
+    <div class="footer-bottom"><span>&copy; Shandré Pillay</span><span>BCom, Stellenbosch University, expected Dec 2026</span></div>
+  </footer></div>
 
 <button class="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <script src="assets/js/site.js"></script>

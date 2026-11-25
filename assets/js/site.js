@@ -110,7 +110,7 @@
         if (mtn && !mtn.classList.contains('mtn-text')) { mtn.classList.add('sketching'); setTimeout(function () { mtn.classList.remove('sketching'); }, 2200); }
       };
       items[0].addEventListener('animationend', landed, { once: true });
-      var still = matchMedia('(prefers-reduced-motion: reduce), (max-width: 860px)').matches;
+      var still = matchMedia('(prefers-reduced-motion: reduce), (max-width: 54rem)').matches;
       setTimeout(landed, still ? 50 : 2500);
     };
     window.__slideNav = slideNav;
@@ -164,7 +164,12 @@
 
   // Carousel
   var track = document.querySelector('.carousel-track');
-  if (track) {
+  var slidesFound = track ? track.querySelectorAll('.slide').length : 0;
+  if (track && slidesFound < 2) {   // nothing to page through: hide the controls
+    var ctr = document.querySelector('.carousel-controls');
+    if (ctr) ctr.hidden = true;
+  }
+  if (track && slidesFound >= 2) {
     var slides = track.querySelectorAll('.slide');
     var dotsBox = document.querySelector('.car-dots');
     var count = document.querySelector('.car-count');
@@ -190,7 +195,7 @@
     };
     var go = function (i) {
       i = (i + slides.length) % slides.length;   // wraps round at either end
-      track.scrollTo({ left: slides[i].offsetLeft - (parseFloat(getComputedStyle(track).paddingLeft) || 0), behavior: 'smooth' });
+      track.scrollTo({ left: slides[i].offsetLeft - (parseFloat(getComputedStyle(track).paddingLeft) || 0), behavior: calm ? 'auto' : 'smooth' });
       markDot(i);
     };
     var ticking = false;
@@ -305,7 +310,7 @@
     accMain.querySelectorAll('.entry').forEach(function (entry, n) {
       var content = entry.children[1];
       if (!content) return;
-      var t = makeAcc(entry, content, [content.querySelector('h3'), content.querySelector('.org')].filter(Boolean));
+      var t = makeAcc(entry, content, [content.querySelector('h2, h3'), content.querySelector('.org')].filter(Boolean));
       if (t && n === 0) firstOpen.push(t);
     });
     // CV page: each .cv-item is [row, sub, details...]; the first of each section starts open
@@ -359,12 +364,18 @@
     }
   }
 
+  // Focus icons replay once per hover-in: alternate between two copies of each animation
+  if (!calm && window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.strip-item').forEach(function (row) {
+      row.addEventListener('mouseenter', function () { row.classList.toggle('alt'); });
+    });
+  }
   // Back to top
   var btt = document.querySelector('.back-to-top');
   if (btt) {
     window.addEventListener('scroll', function () {
       btt.classList.toggle('show', window.scrollY > 500);
     }, { passive: true });
-    btt.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    btt.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: calm ? 'auto' : 'smooth' }); });
   }
 })();

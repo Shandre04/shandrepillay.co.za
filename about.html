@@ -6,10 +6,10 @@
   <title>About | Shandré Pillay</title>
   <meta name="description" content="About Shandré Pillay — skills, languages and interests.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@300;700&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/spectral-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/main.css">
+  <script>try{if(localStorage.getItem('theme')==='dark'||(!localStorage.getItem('theme')&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.style.background='#121716'}catch(e){}</script>
   <script>try{if(sessionStorage.getItem('veil')){sessionStorage.removeItem('veil');document.documentElement.classList.add('veil-in')}}catch(e){}</script>
 </head>
 <body>
@@ -49,8 +49,7 @@
   </header>
 
   <main>
-    <div class="eyebrow">About</div>
-    <h1 class="page-title">Finance, leadership and discipline</h1>
+    <h1 class="page-title">Finance, leadership and <em>discipline</em>.</h1>
     <p class="page-lede">A Stellenbosch University commerce student focused on financial and investment management, with hands-on experience running the finances of a non-profit and shadowing corporate finance at a premium automotive retailer.</p>
 
     <div class="two-col">
@@ -59,7 +58,7 @@
           <div class="section-head"><h2>Profile</h2></div>
           <p>I am completing a Bachelor of Commerce in Management Sciences, majoring in Financial &amp; Investment Management. My coursework spans Corporate Finance, Investment Management, Portfolio Management, Financial Accounting and Economic Research, and I am currently taking a Taxation module.</p>
           <p>Outside the classroom I serve as CFO &amp; Head of Volunteers at SaveSeven, where I oversee capital allocation, budgeting and financial reporting, and lead a multi-disciplinary volunteer network. At Stellenbosch I previously sat on the executive of the EMS Faculty Student Body, driving the Corporate Companies and Professional Interactions portfolio.</p>
-          <p>In September 2026 I took part in a two-day Stellenbosch University and UCT workshop at the Stellenbosch Institute for Advanced Study (STIAS), working with students and researchers on the challenges and solutions for generative AI in tertiary institutions. The findings and guidelines are intended to form a foundational policy framework, and I will be attending the follow-up SoTL Conference in Stellenbosch on 18 November.</p>
+          <p>In September 2026 I took part in a two-day Stellenbosch University and UCT workshop at the Stellenbosch Institute for Advanced Study (STIAS), working with students and researchers on the challenges and solutions for generative AI in tertiary institutions. The findings and guidelines are intended to form a foundational policy framework, and I spoke on the student panel at the follow-up SoTL Conference in Stellenbosch on 18 November.</p>
           <p>In December 2024 I was selected to shadow the East London Financial Manager at NTT Audi, where I studied dealership financial statements, balance sheets and working capital optimisation.</p>
         </div>
 
@@ -78,43 +77,44 @@
 
       <aside>
         <div class="side-block">
-          <h4>Languages</h4>
+          <h3 class="side-title">Languages</h3>
           <ul>
-            <li>English <span class="badge" style="float:right">Fluent</span></li>
-            <li>Afrikaans <span class="badge" style="float:right">Basic conversational</span></li>
+            <li>English <span class="badge">Fluent</span></li>
+            <li>Afrikaans <span class="badge">Basic conversational</span></li>
           </ul>
         </div>
         <div class="side-block">
-          <h4>Interests</h4>
+          <h3 class="side-title">Interests</h3>
           <ul>
             <li>Golf</li>
             <li>Combat sports</li>
             <li>Football</li>
             <li>Weight training / gym fitness</li>
           </ul>
-          <p style="margin-top:.75rem">Long-term physical stamina, discipline and a competitive drive carry over into how I work.</p>
+          <p class="note">Long-term physical stamina, discipline and a competitive drive carry over into how I work.</p>
         </div>
         <div class="side-block">
-          <h4>Based in</h4>
+          <h3 class="side-title">Based in</h3>
           <p>Cape Town, South Africa</p>
         </div>
       </aside>
     </div>
   </main>
 
-  <footer class="site-footer" id="contact">
+  <footer class="site-footer band" id="contact">
+    <p class="footer-sign">Shandré Pillay, <em>Cape Town</em>.</p>
     <div>
       <h4>Contact</h4>
       <ul>
         <li><a href="mailto:shandrepillayhb@gmail.com">shandrepillayhb@gmail.com</a></li>
         <li><a href="tel:+27726272584">072 627 2584</a></li>
-        <li>Cape Town, South Africa</li>
+        <li><span>Cape Town, South Africa</span></li>
       </ul>
     </div>
     <div>
       <h4>Elsewhere</h4>
       <ul>
-        <li><a href="https://www.linkedin.com/in/shandre-pillay-23a5292a1/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="https://www.linkedin.com/in/shandre-pillay-23a5292a1/" target="_blank" rel="noopener">LinkedIn<svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6.5 5H11v4.5"/></svg></a></li>
         <li><a href="assets/docs/Shandre-Pillay-CV.pdf" download>Download CV</a></li>
       </ul>
     </div>
@@ -127,9 +127,8 @@
         <li><a href="cv.html">CV</a></li>
       </ul>
     </div>
-    <div class="footer-bottom">© Shandré Pillay</div>
-  </footer>
-</div>
+    <div class="footer-bottom"><span>&copy; Shandré Pillay</span><span>BCom, Stellenbosch University, expected Dec 2026</span></div>
+  </footer></div>
 
 <button class="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <script src="assets/js/site.js"></script>

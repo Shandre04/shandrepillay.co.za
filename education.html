@@ -6,10 +6,10 @@
   <title>Education | Shandré Pillay</title>
   <meta name="description" content="Education of Shandré Pillay — Stellenbosch University and Selborne College.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@300;700&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/spectral-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/main.css">
+  <script>try{if(localStorage.getItem('theme')==='dark'||(!localStorage.getItem('theme')&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.style.background='#121716'}catch(e){}</script>
   <script>try{if(sessionStorage.getItem('veil')){sessionStorage.removeItem('veil');document.documentElement.classList.add('veil-in')}}catch(e){}</script>
 </head>
 <body>
@@ -49,18 +49,17 @@
   </header>
 
   <main>
-    <div class="eyebrow">Education</div>
-    <h1 class="page-title">Education</h1>
+    <h1 class="page-title">My <em>education</em>.</h1>
     <p class="page-lede">From a Mathematics-and-Accounting matric in East London to a commerce degree in Financial &amp; Investment Management at Stellenbosch.</p>
 
     <article class="entry">
       <div class="entry-meta"><strong>Expected Dec 2026</strong>Stellenbosch, South Africa</div>
       <div>
-        <h3>Bachelor of Commerce in Management Sciences</h3>
+        <h2 class="entry-title">Bachelor of Commerce in Management Sciences</h2>
         <div class="org">Stellenbosch University</div>
-        <p><strong style="color:var(--text)">Majors:</strong> Financial &amp; Investment Management</p>
-        <p><strong style="color:var(--text)">Relevant coursework:</strong></p>
-        <ul class="badges" style="margin-bottom:1rem">
+        <p><strong style="color:var(--ink)">Majors:</strong> Financial &amp; Investment Management</p>
+        <p><strong style="color:var(--ink)">Relevant coursework:</strong></p>
+        <ul class="badges">
           <li class="badge">Corporate Finance</li>
           <li class="badge">Investment Management</li>
           <li class="badge">Portfolio Management</li>
@@ -68,34 +67,35 @@
           <li class="badge">Economic Research</li>
           <li class="badge">Taxation (current module)</li>
         </ul>
-        <p><strong style="color:var(--text)">Leadership &amp; campus involvement:</strong> previously an executive member of the Economic and Management Sciences (EMS) Faculty Student Body, driving the Corporate Companies and Professional Interactions portfolio.</p>
+        <p><strong style="color:var(--ink)">Leadership &amp; campus involvement:</strong> previously an executive member of the Economic and Management Sciences (EMS) Faculty Student Body, driving the Corporate Companies and Professional Interactions portfolio.</p>
       </div>
     </article>
 
     <article class="entry">
       <div class="entry-meta"><strong>2018 – 2022</strong>East London, South Africa</div>
       <div>
-        <h3>National Senior Certificate (Matric)</h3>
+        <h2 class="entry-title">National Senior Certificate (Matric)</h2>
         <div class="org">Selborne College</div>
-        <p><strong style="color:var(--text)">Subjects:</strong> Mathematics, Physical Science, Accounting, History, English, Afrikaans.</p>
-        <p><strong style="color:var(--text)">Leadership:</strong> appointed School Prefect and Class Representative; elected 1st Football Team Vice-Captain.</p>
+        <p><strong style="color:var(--ink)">Subjects:</strong> Mathematics, Physical Science, Accounting, History, English, Afrikaans.</p>
+        <p><strong style="color:var(--ink)">Leadership:</strong> appointed School Prefect and Class Representative; elected 1st Football Team Vice-Captain.</p>
       </div>
     </article>
   </main>
 
-  <footer class="site-footer" id="contact">
+  <footer class="site-footer band" id="contact">
+    <p class="footer-sign">Shandré Pillay, <em>Cape Town</em>.</p>
     <div>
       <h4>Contact</h4>
       <ul>
         <li><a href="mailto:shandrepillayhb@gmail.com">shandrepillayhb@gmail.com</a></li>
         <li><a href="tel:+27726272584">072 627 2584</a></li>
-        <li>Cape Town, South Africa</li>
+        <li><span>Cape Town, South Africa</span></li>
       </ul>
     </div>
     <div>
       <h4>Elsewhere</h4>
       <ul>
-        <li><a href="https://www.linkedin.com/in/shandre-pillay-23a5292a1/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="https://www.linkedin.com/in/shandre-pillay-23a5292a1/" target="_blank" rel="noopener">LinkedIn<svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6.5 5H11v4.5"/></svg></a></li>
         <li><a href="assets/docs/Shandre-Pillay-CV.pdf" download>Download CV</a></li>
       </ul>
     </div>
@@ -108,9 +108,8 @@
         <li><a href="cv.html">CV</a></li>
       </ul>
     </div>
-    <div class="footer-bottom">© Shandré Pillay</div>
-  </footer>
-</div>
+    <div class="footer-bottom"><span>&copy; Shandré Pillay</span><span>BCom, Stellenbosch University, expected Dec 2026</span></div>
+  </footer></div>
 
 <button class="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <script src="assets/js/site.js"></script>

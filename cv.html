@@ -6,10 +6,10 @@
   <title>CV | Shandré Pillay</title>
   <meta name="description" content="Curriculum vitae of Shandré Pillay.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@300;700&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/spectral-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/main.css">
+  <script>try{if(localStorage.getItem('theme')==='dark'||(!localStorage.getItem('theme')&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.style.background='#121716'}catch(e){}</script>
   <script>try{if(sessionStorage.getItem('veil')){sessionStorage.removeItem('veil');document.documentElement.classList.add('veil-in')}}catch(e){}</script>
 </head>
 <body>
@@ -49,19 +49,18 @@
   </header>
 
   <main data-accordion>
-    <div class="eyebrow">Curriculum vitae</div>
-    <h1 class="page-title">CV</h1>
+    <h1 class="page-title">Curriculum <em>vitae</em>.</h1>
     <p class="page-lede">The full CV below, or download it as a PDF.</p>
 
     <div class="cv-bar">
-      <a class="btn btn-solid" href="assets/docs/Shandre-Pillay-CV.pdf" download>Download PDF</a>
-      <a class="btn btn-solid" href="#" onclick="window.print();return false;" style="background:transparent;color:var(--accent);border-color:var(--accent)">Print</a>
+      <a class="btn btn-primary" href="assets/docs/Shandre-Pillay-CV.pdf" download><span class="dot" aria-hidden="true"></span>Download PDF</a>
+      <button class="btn btn-ghost" type="button" onclick="window.print()">Print</button>
     </div>
 
     <div class="cv-sheet">
       <div class="cv-head">
         <div class="cv-name">Shandré Pillay</div>
-        <div class="cv-contact">072 627 2584 &nbsp;|&nbsp; shandrepillayhb@gmail.com &nbsp;|&nbsp; <a href="https://www.linkedin.com/in/shandre-pillay-23a5292a1/" target="_blank" rel="noopener">linkedin.com/in/shandre-pillay-23a5292a1</a> &nbsp;|&nbsp; Cape Town, South Africa</div>
+        <div class="cv-contact"><span>072 627 2584</span><span>shandrepillayhb@gmail.com</span><a href="https://www.linkedin.com/in/shandre-pillay-23a5292a1/" target="_blank" rel="noopener">linkedin.com/in/shandre-pillay-23a5292a1</a><span>Cape Town, South Africa</span></div>
       </div>
       <h2>Education</h2>
       <div class="cv-item">
@@ -83,7 +82,7 @@
         <ul>
           <li><strong>Collaborative research:</strong> took part in a two-day event co-hosted by Stellenbosch University and the University of Cape Town, working with students and researchers from both institutions to identify the key challenges and actionable solutions for generative AI in tertiary institutions.</li>
           <li><strong>Policy outcome:</strong> findings and a comprehensive set of guidelines are due to be published as a foundational policy framework for generative AI use across tertiary institutions.</li>
-          <li><strong>Follow-up conference:</strong> attending the SoTL Conference in Stellenbosch on 18 November 2026, where students share the insights and experiences that emerged from the CoLab process.</li>
+          <li><strong>Follow-up conference:</strong> spoke on the student panel at the SoTL Conference in Stellenbosch on 18 November 2026, where students shared the insights and experiences that emerged from the CoLab process.</li>
         </ul>
       </div>
       <div class="cv-item">
@@ -121,9 +120,9 @@
 
       <h2>Skills, interests &amp; languages</h2>
       <div class="cv-item">
-        <p><strong style="color:var(--text)">Technical skills:</strong> Financial Analysis, Corporate Valuation Principles, Budgeting &amp; Forecasting, Accounting Systems, Advanced MS Excel (Financial Modelling), MS PowerPoint.</p>
-        <p><strong style="color:var(--text)">Languages:</strong> English (Fluent), Afrikaans (Basic conversational).</p>
-        <p><strong style="color:var(--text)">Interests &amp; hobbies:</strong> Golf, Combat Sports, Football, Weight Training / Gym fitness.</p>
+        <p><strong style="color:var(--ink)">Technical skills:</strong> Financial Analysis, Corporate Valuation Principles, Budgeting &amp; Forecasting, Accounting Systems, Advanced MS Excel (Financial Modelling), MS PowerPoint.</p>
+        <p><strong style="color:var(--ink)">Languages:</strong> English (Fluent), Afrikaans (Basic conversational).</p>
+        <p><strong style="color:var(--ink)">Interests &amp; hobbies:</strong> Golf, Combat Sports, Football, Weight Training / Gym fitness.</p>
       </div>
       <h2>References</h2>
       <div class="cv-refs">
@@ -151,19 +150,20 @@
     </div>
   </main>
 
-  <footer class="site-footer" id="contact">
+  <footer class="site-footer band" id="contact">
+    <p class="footer-sign">Shandré Pillay, <em>Cape Town</em>.</p>
     <div>
       <h4>Contact</h4>
       <ul>
         <li><a href="mailto:shandrepillayhb@gmail.com">shandrepillayhb@gmail.com</a></li>
         <li><a href="tel:+27726272584">072 627 2584</a></li>
-        <li>Cape Town, South Africa</li>
+        <li><span>Cape Town, South Africa</span></li>
       </ul>
     </div>
     <div>
       <h4>Elsewhere</h4>
       <ul>
-        <li><a href="https://www.linkedin.com/in/shandre-pillay-23a5292a1/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="https://www.linkedin.com/in/shandre-pillay-23a5292a1/" target="_blank" rel="noopener">LinkedIn<svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6.5 5H11v4.5"/></svg></a></li>
         <li><a href="assets/docs/Shandre-Pillay-CV.pdf" download>Download CV</a></li>
       </ul>
     </div>
@@ -176,9 +176,8 @@
         <li><a href="cv.html">CV</a></li>
       </ul>
     </div>
-    <div class="footer-bottom">© Shandré Pillay</div>
-  </footer>
-</div>
+    <div class="footer-bottom"><span>&copy; Shandré Pillay</span><span>BCom, Stellenbosch University, expected Dec 2026</span></div>
+  </footer></div>
 
 <button class="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <script src="assets/js/site.js"></script>
