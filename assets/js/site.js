@@ -386,6 +386,31 @@
       row.addEventListener('mouseenter', function () { row.classList.toggle('alt'); });
     });
   }
+  // Home: the background hills draw themselves in, valley to summit, once on arrival
+  var homeMain = document.querySelector('main.home');
+  var pageEl = document.querySelector('.page');
+  if (homeMain && pageEl) {
+    var fallback = function () { pageEl.classList.add('contours-fallback'); };   // static layer comes back
+    if (!window.fetch || !window.DOMParser) fallback();
+    else {
+      fetch('assets/img/contours.svg').then(function (r) {
+        if (!r.ok) throw new Error('contours ' + r.status);
+        return r.text();
+      }).then(function (txt) {
+        var svg = new DOMParser().parseFromString(txt, 'image/svg+xml').documentElement;
+        if (!svg || svg.nodeName.toLowerCase() !== 'svg') throw new Error('contours: not svg');
+        svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+        svg.setAttribute('aria-hidden', 'true');
+        svg.setAttribute('focusable', 'false');
+        var layer = document.createElement('div');
+        layer.className = 'contour-live draw';
+        layer.style.setProperty('--base', (veilIn && !calm ? 650 : 150) + 'ms');   // wait for the veil to lift
+        layer.appendChild(document.importNode(svg, true));
+        pageEl.insertBefore(layer, pageEl.firstChild);
+      }).catch(fallback);
+    }
+  }
+
   // Back to top
   var btt = document.querySelector('.back-to-top');
   if (btt) {

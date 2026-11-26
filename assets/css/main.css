@@ -117,9 +117,21 @@ body.dark-mode {
   z-index: -1;
   pointer-events: none;
   background: var(--contour);
-  -webkit-mask: url("../img/contours.svg") 62% 40% / cover no-repeat;
-  mask: url("../img/contours.svg") 62% 40% / cover no-repeat;
+  -webkit-mask: url("../img/contours.svg") 50% 50% / cover no-repeat;
+  mask: url("../img/contours.svg") 50% 50% / cover no-repeat;
 }
+/* Home: the same hills arrive as real lines and draw themselves in, valley to summit.
+   The static layer steps aside so nothing flashes before the drawing starts. */
+.page:has(> main.home):not(.contours-fallback)::before { display: none; }
+.contour-live { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+.contour-live svg { display: block; width: 100%; height: 100%; }
+.contour-live path { stroke: var(--contour); }
+.contour-live.draw path {
+  stroke-dasharray: 1 1.2;
+  animation: contourDraw 1.1s var(--ease) calc(var(--base, 150ms) + var(--lv, 0) * 30ms) both;
+}
+@keyframes contourDraw { from { stroke-dashoffset: 1.1; opacity: 0.25; } to { stroke-dashoffset: 0; opacity: 1; } }
+@keyframes contourFade { from { opacity: 0; } }
 .glass, .hero-copy, .carousel, main:not(.home) {
   background: var(--glass);
   -webkit-backdrop-filter: var(--frost);
@@ -859,6 +871,7 @@ html.veil-in .page { opacity: 0; animation: showPage 0s 1.5s forwards; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .btn, .car-btn, .acc-all, .theme-switch::after { transition: none; }
   .nav-list, .nav-list.open { transition: none; }
+  .contour-live.draw path { stroke-dasharray: none; animation: contourFade 0.4s var(--ease) both; }
 }
 
 /* ---------- Print (the CV PDF is printed from cv.html?print) ---------- */
@@ -870,7 +883,7 @@ html.veil-in .page { opacity: 0; animation: showPage 0s 1.5s forwards; }
     background: #fff; color: #1c2321;
   }
   .site-header, .site-footer, .back-to-top, .cv-bar, .page-title, .page-lede, .veil, .horizon { display: none !important; }
-  .page::before, .close::before { display: none !important; }
+  .page::before, .close::before, .contour-live { display: none !important; }
   main:not(.home) { padding: 0; margin: 0; background: none; border: 0; border-radius: 0; -webkit-backdrop-filter: none; backdrop-filter: none; }
   .cv-sheet { border: 0; padding: 0; background: #fff; border-radius: 0; }
   .cv-name { font-size: 2.4rem; }
