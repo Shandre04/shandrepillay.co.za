@@ -358,9 +358,13 @@
       });
       accItems.forEach(function (a) { a.item.addEventListener('click', function () { setTimeout(refresh, 0); }); });
       refresh();
-      tools.appendChild(allBtn);
-      var anchor = sheet ? sheet.firstElementChild : accMain.querySelector('.entry');
-      (sheet || accMain).insertBefore(tools, anchor);
+      var bar = document.querySelector('.cv-bar');   // CV page: sits with Download and Print
+      if (bar) { bar.appendChild(allBtn); }
+      else {
+        tools.appendChild(allBtn);
+        var anchor = sheet ? sheet.firstElementChild : accMain.querySelector('.entry');
+        (sheet || accMain).insertBefore(tools, anchor);
+      }
     }
   }
 
